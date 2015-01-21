@@ -54,10 +54,6 @@ module.exports = function(grunt) {
                     'bower_components/requirejs-text/text.js'
                 ],
                 dest: '<%= paths.build %>/'
-            },
-            spec: {
-                src: [ '<%= paths.spec %>/*' ],
-                dest: '<%= paths.build %>/'
             }
 
         },
