@@ -30,8 +30,9 @@ module.exports = function(grunt) {
                     css: []
                 }
             },
-            html : {
-                src : '%<= paths.build %>/index.html',
+            html: {
+                src : '<%= paths.build %>/index.html',
+                dest : '<%= paths.build %>/index.html'
             },
         },
         clean: [ '<%= paths.build %>/*' ],
