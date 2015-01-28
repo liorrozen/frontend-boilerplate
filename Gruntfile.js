@@ -11,6 +11,18 @@ module.exports = function(grunt) {
         jshint: {
             all: ['Gruntfile.js', '<%= paths.src %>/**/*.js']
         },
+        requirejs: {
+            compile: {
+                options: {
+                    appDir: "<%= paths.build %>",
+                    baseUrl: "./",
+                    mainConfigFile: "<%= paths.build %>/src/main.js",
+                    allowSourceOverwrites: true,
+                    keepBuildDir: true,
+                    dir: "<%= paths.build %>",
+                },
+            }
+        },
         connect: {
             server: {
                 options: {
@@ -77,7 +89,8 @@ module.exports = function(grunt) {
         'jshint',
         'clean',
         'copy',
-        'preprocess'
+        'preprocess',
+        'requirejs'
     ]);
 
     grunt.registerTask('server',[
