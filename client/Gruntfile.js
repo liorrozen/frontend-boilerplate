@@ -5,23 +5,12 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         paths: {
+            libs: 'bower_components',
             src: 'src',
             build: 'build'
         },
         jshint: {
             all: ['Gruntfile.js', '<%= paths.src %>/**/*.js']
-        },
-        requirejs: {
-            compile: {
-                options: {
-                    appDir: "<%= paths.build %>",
-                    baseUrl: "./",
-                    mainConfigFile: "<%= paths.build %>/src/main.js",
-                    allowSourceOverwrites: true,
-                    keepBuildDir: true,
-                    dir: "<%= paths.build %>",
-                },
-            }
         },
         connect: {
             server: {
@@ -57,7 +46,6 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/fontawesome/css/font-awesome.min.css',
                     'bower_components/fontawesome/fonts/*',
-                    'bower_components/nanoscroller/bin/css/nanoscroller.css',
 
                     'bower_components/requirejs/require.js',
                     'bower_components/jquery/jquery.min.js',
@@ -68,6 +56,18 @@ module.exports = function(grunt) {
                 dest: '<%= paths.build %>/'
             }
 
+        },
+        requirejs: {
+            compile: {
+                options: {
+                    appDir: "<%= paths.build %>",
+                    baseUrl: "./",
+                    mainConfigFile: "<%= paths.build %>/src/main.js",
+                    allowSourceOverwrites: true,
+                    keepBuildDir: true,
+                    dir: "<%= paths.build %>",
+                },
+            }
         },
         watch: {
             options: {
