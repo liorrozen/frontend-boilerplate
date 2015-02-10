@@ -1,9 +1,9 @@
 require.config({
     paths: {
-        jquery: '/bower_components/jquery/jquery.min',
-        underscore: '/bower_components/underscore/underscore-min',
-        backbone: '/bower_components/backbone/backbone',
-        text: '/bower_components/requirejs-text/text'
+        jquery: '/static/libs/jquery/jquery.min',
+        underscore: '/static/libs/underscore/underscore-min',
+        backbone: '/static/libs/backbone/backbone',
+        text: '/static/libs/requirejs-text/text'
     }
 
 });
