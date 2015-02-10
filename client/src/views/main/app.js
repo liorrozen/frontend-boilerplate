@@ -1,11 +1,13 @@
 define([
   'jquery',
   'underscore',
-  'backbone'
-], function($, _, Backbone){
+  'backbone',
+  'foundation'
+], function($, _, Backbone, foundation){
   var AppView = Backbone.View.extend({
 
     render: function(){
+        $(document).foundation();
         console.log( 'Here' );
     }
   });

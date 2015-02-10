@@ -1,12 +1,16 @@
 {
-    "name": "unnamed",
-    "version": "0.0.1",
-    "directory": "./client/libs/",
-    "dependencies": {
-        "requirejs": "~2.1.15",
-        "requirejs-text": "~2.0.13",
-        "jquery": "~1.10.2",
-        "backbone": "~1.1.2",
-        "fontawesome": "~4.2.0"
-    }
+  "name": "unnamed",
+  "version": "0.0.1",
+  "directory": "./client/libs/",
+  "dependencies": {
+    "requirejs": "2.1.15",
+    "requirejs-text": "2.0.13",
+    "jquery": "1.10.2",
+    "backbone": "1.1.2",
+    "fontawesome": "4.2.0",
+    "foundation": "5.5.1"
+  },
+  "resolutions": {
+    "jquery": ">= 2.1.0"
+  }
 }
