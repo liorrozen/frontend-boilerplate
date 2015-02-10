@@ -1,1 +1,4 @@
 flask==0.10.1
+flask-sqlalchemy==2.0
+flask-security==1.7.4
+MySQL-python==1.2.5
