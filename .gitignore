@@ -1,7 +1,9 @@
 # Client
-client/bower_components/*
-client/node_modules/*
+client/libs/*
 client/build/*
+# Client dev
+node_modules/*
+
 
 # Server
-server/venv/*
+venv/*
