@@ -1,24 +1,45 @@
 module.exports = function(grunt) {
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    var rewriteRulesSnippet = require('grunt-connect-rewrite/lib/utils').rewriteRequest;
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         paths: {
-            libs: 'bower_components',
-            src: 'src',
-            build: 'build'
+            libs: 'client/libs',
+            src: 'client/src',
+            build: 'client/build'
         },
         jshint: {
             all: ['Gruntfile.js', '<%= paths.src %>/**/*.js']
         },
         connect: {
+            rules: [
+                {from: '/static/(.*)$', to: '/client/$1'}
+            ],
             server: {
                 options: {
                     port: 9001,
                     livereload: true,
                     open: {
                         target: 'http://127.0.0.1:<%= connect.server.options.port %>'
+                    },
+                    middleware: function (connect, options) {
+                        var middlewares = [];
+
+                        // RewriteRules support
+                        middlewares.push(rewriteRulesSnippet);
+
+                        if (!Array.isArray(options.base)) {
+                            options.base = [options.base];
+                        }
+
+                        options.base.forEach(function (base) {
+                            // Serve static files.
+                            middlewares.push(connect.static(base));
+                        });
+
+                        return middlewares;
                     }
                 }
             }
@@ -44,16 +65,16 @@ module.exports = function(grunt) {
             },
             vendors: {
                 src: [
-                    'bower_components/fontawesome/css/font-awesome.min.css',
-                    'bower_components/fontawesome/fonts/*',
+                    '<%= paths.libs %>/fontawesome/css/font-awesome.min.css',
+                    '<%= paths.libs %>/fontawesome/fonts/*',
 
-                    'bower_components/requirejs/require.js',
-                    'bower_components/jquery/jquery.min.js',
-                    'bower_components/underscore/underscore-min.js',
-                    'bower_components/backbone/backbone.js',
-                    'bower_components/requirejs-text/text.js'
+                    '<%= paths.libs %>/requirejs/require.js',
+                    '<%= paths.libs %>/jquery/jquery.min.js',
+                    '<%= paths.libs %>/underscore/underscore-min.js',
+                    '<%= paths.libs %>/backbone/backbone.js',
+                    '<%= paths.libs %>/requirejs-text/text.js'
                 ],
-                dest: '<%= paths.build %>/'
+                dest: 'build'
             }
 
         },
@@ -94,7 +115,8 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('server',[
-        'connect',
+        'configureRewriteRules',
+        'connect:server',
         'watch'
     ]);
 
