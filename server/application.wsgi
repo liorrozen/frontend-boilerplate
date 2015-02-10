@@ -14,5 +14,4 @@ execfile(activate_this, dict(__file__=activate_this))
 import main
 
 main.app.config["DEBUG"] = True
-main.app.config["root_path"] = "/var/www/html/boilerplate/"
 application = main.app
