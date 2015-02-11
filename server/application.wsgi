@@ -11,7 +11,6 @@ sys.path.insert(0, server_path )
 activate_this = "%s/venv/bin/activate_this.py" % root
 execfile(activate_this, dict(__file__=activate_this))
 
-import main
+from app import create_app
 
-main.app.config["DEBUG"] = True
-application = main.app
+application = create_app('config.development')

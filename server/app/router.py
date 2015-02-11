@@ -1,11 +1,11 @@
 routes = []
 
 
-def route( rule, *args, **kwargs ):
+def route( rule, *route_args, **route_kwargs ):
 
-    def route_decorator( cls ):
-        routes.append( ( cls, rule, args, kwargs ) )
-        return cls
+    def route_decorator(original_class):
+
+        routes.append( ( original_class, rule, route_args, route_kwargs ) )
 
     return route_decorator
 
