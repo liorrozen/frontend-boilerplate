@@ -60,22 +60,15 @@ module.exports = function(grunt) {
         clean: [ '<%= paths.build %>/*' ],
         copy: {
             main: {
-                src: [ '<%= paths.src %>/**/*', 'index.html' ],
-                dest: '<%= paths.build %>/'
+                    src: [ '<%= paths.src %>/**/*', 'index.html' ],
+                    dest: '<%= paths.build %>/',
+                    expand: false,
             },
             vendors: {
-                src: [
-                    '<%= paths.libs %>/fontawesome/css/font-awesome.min.css',
-                    '<%= paths.libs %>/fontawesome/fonts/*',
-
-                    '<%= paths.libs %>/requirejs/require.js',
-                    '<%= paths.libs %>/jquery/jquery.min.js',
-                    '<%= paths.libs %>/underscore/underscore-min.js',
-                    '<%= paths.libs %>/backbone/backbone.js',
-                    '<%= paths.libs %>/requirejs-text/text.js'
-                ],
-                dest: 'build'
-            }
+                    src: [ '<%= paths.libs %>/**/*' ],
+                    dest: '<%= paths.build %>/',
+                    expand: false,
+                }
 
         },
         requirejs: {
