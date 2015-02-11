@@ -3,7 +3,7 @@ define([
   'underscore',
   'backbone',
   'foundation'
-], function($, _, Backbone, foundation){
+], function($, _, Backbone){
   var AppView = Backbone.View.extend({
 
     render: function(){
